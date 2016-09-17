@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {ContainerView} from '../../views/container.jsx'
+import {ContainerView} from '/app/views/container/container.jsx'
 
 export class Renderer {
 

@@ -1,6 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import {appState} from '/app/js/state/state.js'
+
+import {FooterView} from './footer/footer.jsx'
+
+import {DatafileView} from '../content/datafile/datafile.jsx'
+
+
 export class ContainerView extends React.Component {
 
   constructor(props) {
@@ -17,15 +24,11 @@ export class ContainerView extends React.Component {
 			  <header className="toolbar toolbar-header">
 			    <h1 className="title">Header</h1>
 			  </header>
-			  <div className="window-content">
-			    <div className="pane-group">
-			      <div className="pane-sm sidebar">...</div>
-			      <div className="pane">...</div>
-			    </div>
-			  </div>
-			  <footer className="toolbar toolbar-footer">
-			    <h1 className="title">Footer</h1>
-			  </footer>
+
+				<DatafileView />
+
+			  <FooterView />
+
 			</div>
     )
   }

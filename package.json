@@ -23,6 +23,7 @@
     "app-root-path": "^2.0.1",
     "babel-root-slash-import": "^1.1.0",
     "jsonfile": "^2.4.0",
+    "moment": "^2.15.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-photonkit": "^0.4.1"
