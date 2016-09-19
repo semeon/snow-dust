@@ -1,6 +1,5 @@
 import {Store} from './class/storeClass.js'
 
-
 class StateStore extends Store {
 
   constructor(props) {
@@ -10,12 +9,12 @@ class StateStore extends Store {
   }
 
 	setDefaults() {
-		this.state.view = "datafile"
+		this.state.view = "config"
 	}
 
 	update(field, value) {
 		if (field && value) {
-			console.log(this.storeName + " Store Update:")
+			console.log("STORE: " + this.storeName + " Store Update:")
 			console.log("-- Field: " + field)
 			console.log("-- Value: " + value)
 			this.state[field] = value
@@ -31,4 +30,4 @@ class StateStore extends Store {
 
 }
 
-export let appStateStore = new StateStore('App State')
+export let appStateStore = new StateStore({name:'AppState'})

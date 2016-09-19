@@ -1,11 +1,11 @@
-import React from 'react';
-import {render} from 'react-dom';
+import React from 'react'
+import {render} from 'react-dom'
 
-import {appState} from '/app/js/state/state.js'
+import {settingsStore} from '/app/stores/settings.js'
+import {appStateStore} from '/app/stores/state.js'
 
 import {FooterView} from './footer/footer.jsx'
-
-import {DatafileView} from '../content/datafile/datafile.jsx'
+import {ConfigView} from '../content/config/config.jsx'
 
 
 export class ContainerView extends React.Component {
@@ -19,17 +19,42 @@ export class ContainerView extends React.Component {
 
   render() {
 
-    return (
+		let standByView = (
 			<div className="window">
-			  <header className="toolbar toolbar-header">
-			    <h1 className="title">Header</h1>
-			  </header>
+				<div className="pane">Please stand by!!!!</div>
+			</div>				
+		)
 
-				<DatafileView />
+		if (appStateStore && settingsStore) {
+			let contentView = standByView
+			switch (appStateStore.getState('view')) {
+			    case 'config':
+			        contentView = <ConfigView />
+			        break; 
 
-			  <FooterView />
+			    default: 
+			        contentView = standByView
+			}
 
-			</div>
-    )
+			
+	    return (
+				<div className="window">
+				  <header className="toolbar toolbar-header">
+				    <h1 className="title">Header</h1>
+				  </header>
+					{contentView}
+				  <FooterView />
+				</div>
+	    )
+
+		} else {
+			console.log('Not yet')
+			return (
+				<div className="window">
+					<div className="pane">Please stand by!!!!</div>
+				</div>
+			)
+		}
+
   }
 }

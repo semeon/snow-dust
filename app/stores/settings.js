@@ -12,7 +12,8 @@ class SettingsStore extends Store {
   }
 
 	setDefaults() {
-	 		this.settings = jsonfile.readFileSync(appRoot.path + '/config/settings.json')
+ 		this.settings = jsonfile.readFileSync(appRoot.path + '/config/settings.json')
+		this.isLoaded = true		
 	}
 
 	getSettings() {
@@ -21,4 +22,4 @@ class SettingsStore extends Store {
 
 }
 
-export let settingsStore = new SettingsStore('Settings')
+export let settingsStore = new SettingsStore({name:'Settings'})

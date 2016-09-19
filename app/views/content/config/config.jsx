@@ -1,11 +1,11 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-// import {appStateStore} from '/app/stores/state.js'
-// import {settingsStore} from '/app/stores/settings.js'
+import {appStateStore} from '/app/stores/state.js'
+import {settingsStore} from '/app/stores/settings.js'
 
 
-export class DatafileView extends React.Component {
+export class ConfigView extends React.Component {
 
   constructor(props) {
     super(props)
@@ -13,7 +13,7 @@ export class DatafileView extends React.Component {
 
   render() {
 
-		// let datafilePath = settingsStore.getSettings().datafile
+		let datafilePath = settingsStore.getSettings().datafile
 
     return (
 		  <div className="window-content">

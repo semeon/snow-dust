@@ -1,23 +1,24 @@
-import {Renderer} from '/app/js/renderer/renderer.js'
+import {renderer} from '/app/js/renderer/renderer.js'
 
+let counter = 0
 
 export class Store {
 	constructor(props) {
-		this.storeName = props
-		this.renderer = new Renderer()
+		counter++
+		this.id = counter 
+		this.storeName = props.name
 	}
 
 	setDefaults() {
 		
 	}
 
-
 	update() {
 		this.applyChange()
 	}
 
 	applyChange() {
-		console.log(this.storeName + "Store: Render call")
-		this.renderer.render()
+		console.log("STORE: " + this.storeName + "Store: Render call")
+		renderer.render()
 	}
 }
