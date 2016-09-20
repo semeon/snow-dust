@@ -23,49 +23,33 @@ export class ContainerView extends React.Component {
   render() {
 
 		let standByView = (
-			<div className="window">
 				<div className="pane">Please stand by!!!!</div>
-			</div>				
 		)
 
-		console.log('Container View: ' + appStateStore.getState('view'))
-
+		let contentPaneView = standByView
 
 		if (appStateStore && settingsStore) {
-			let contentPaneView = standByView
-			switch (appStateStore.getState('view')) {
-			    case 'config':
-			        contentPaneView = <ConfigView />
-			        break; 
-
-			    case 'account':
-			        contentPaneView = <AccountsView />
-			        break; 
-
-			    default: 
-			        contentPaneView = standByView
-			}
-
+			let currentView = appStateStore.getState('view')
+			console.log('Container View: ' + currentView)
 			
-	    return (
-				<div className="window">
+			if (currentView == 'config') {
+	      contentPaneView = <ConfigView />
 
-					<HeaderView />
+			} else if( currentView.indexOf('accounts-') == 0 ) {
+        contentPaneView = <AccountsView />
 
-					{contentPaneView}
-
-				  <FooterView />
-				</div>
-	    )
-
-		} else {
-			console.log('Not yet')
-			return (
-				<div className="window">
-					<div className="pane">Please stand by!!!!</div>
-				</div>
-			)
+			} else {
+				contentPaneView = standByView
+			}       
 		}
+
+    return (
+			<div className="window">
+				<HeaderView />
+				{contentPaneView}
+			  <FooterView />
+			</div>
+    )
 
   }
 }

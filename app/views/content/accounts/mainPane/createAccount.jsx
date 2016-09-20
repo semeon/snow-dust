@@ -10,6 +10,12 @@ export class CreateAccountView extends React.Component {
   constructor(props) {
     super(props)
   }
+	
+
+  cancelAccountClick() {
+		console.log('CLICK')
+		appStateStore.update('view', 'accounts-transaction-list')
+  }
 
   render() {
 
@@ -54,11 +60,11 @@ export class CreateAccountView extends React.Component {
 				<hr/>
 
 				<div className="toolbar-actions">
-			    <button className="btn btn-default pull-right">
+			    <button className="btn btn-default pull-right" onClick={this.cancelAccountClick.bind(this)}>
 			      Cancel
 			    </button>
 
-			    <button className="btn btn-primary pull-right">
+			    <button className="btn btn-primary pull-right" onClick={this.cancelAccountClick.bind(this)}>
 			      Save
 			    </button>
 			  </div>
