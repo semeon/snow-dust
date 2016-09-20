@@ -5,19 +5,19 @@ import {appStateStore} from '/app/stores/state.js'
 import {settingsStore} from '/app/stores/settings.js'
 
 
-export class FooterView extends React.Component {
+export class ConfigLeftNavView extends React.Component {
 
   constructor(props) {
     super(props)
   }
 
   render() {
+
 		let datafilePath = settingsStore.getSettings().datafile
 
     return (
-		  <footer className="toolbar toolbar-footer">
-				<h1 className="title pull-left"> &nbsp;Datafile: {datafilePath} <span className="icon icon-floppy"></span></h1>
-		  </footer>			
+      <div className="pane-sm sidebar">
+			</div>
     )
   }
 }

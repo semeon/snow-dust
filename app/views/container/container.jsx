@@ -4,7 +4,10 @@ import {render} from 'react-dom'
 import {settingsStore} from '/app/stores/settings.js'
 import {appStateStore} from '/app/stores/state.js'
 
+import {HeaderView} from './header/header.jsx'
 import {FooterView} from './footer/footer.jsx'
+
+
 import {ConfigView} from '../content/config/config.jsx'
 
 
@@ -26,23 +29,24 @@ export class ContainerView extends React.Component {
 		)
 
 		if (appStateStore && settingsStore) {
-			let contentView = standByView
+			let contentPaneView = standByView
 			switch (appStateStore.getState('view')) {
 			    case 'config':
-			        contentView = <ConfigView />
+			        contentPaneView = <ConfigView />
 			        break; 
 
 			    default: 
-			        contentView = standByView
+			        contentPaneView = standByView
 			}
 
 			
 	    return (
 				<div className="window">
-				  <header className="toolbar toolbar-header">
-				    <h1 className="title">Header</h1>
-				  </header>
-					{contentView}
+
+					<HeaderView />
+
+					{contentPaneView}
+
 				  <FooterView />
 				</div>
 	    )
