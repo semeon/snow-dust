@@ -16,6 +16,7 @@ export class CreateAccountView extends React.Component {
     return (
 			<div className="padded-more">
 				<h3>Create a New Account</h3>
+
 				<form>
 				  <div className="form-group">
 				    <label>Account Name</label>
@@ -46,7 +47,21 @@ export class CreateAccountView extends React.Component {
 					    <option>USD</option>
 					  </select>
 				  </div>
-				</form>				
+				</form>		
+			
+		
+
+				<hr/>
+
+				<div className="toolbar-actions">
+			    <button className="btn btn-default pull-right">
+			      Cancel
+			    </button>
+
+			    <button className="btn btn-primary pull-right">
+			      Save
+			    </button>
+			  </div>
 
 			</div>
 

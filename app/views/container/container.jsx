@@ -7,7 +7,6 @@ import {appStateStore} from '/app/stores/state.js'
 import {HeaderView} from './header/header.jsx'
 import {FooterView} from './footer/footer.jsx'
 
-import {SingleAccountView} from '../content/account/account.jsx'
 import {ConfigView} from '../content/config/config.jsx'
 import {AccountsView} from '../content/accounts/accounts.jsx'
 
@@ -40,13 +39,8 @@ export class ContainerView extends React.Component {
 			        break; 
 
 			    case 'account':
-			        contentPaneView = <SingleAccountView />
-			        break; 
-
-			    case 'accounts':
 			        contentPaneView = <AccountsView />
 			        break; 
- 
 
 			    default: 
 			        contentPaneView = standByView
