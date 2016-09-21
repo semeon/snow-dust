@@ -10,7 +10,6 @@ class Renderer {
 	}
 	
 	render() {
-		console.dir('Renderer called')
 		ReactDOM.render(<ContainerView />, document.getElementById('app'))
 	}
 }

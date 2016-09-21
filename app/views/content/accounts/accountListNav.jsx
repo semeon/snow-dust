@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 import {appStateStore} from '/app/stores/state.js'
 import {settingsStore} from '/app/stores/settings.js'
+import {modelStore} from '/app/stores/model.js'
 
 
 export class AccountListNavView extends React.Component {
@@ -11,31 +12,37 @@ export class AccountListNavView extends React.Component {
     super(props)
   }
 
+	listItemClick(accountId) {
+		appStateStore.update('selectedAccount', accountId)
+	}
+
   render() {
+
+		let navItems = []
+
+		let accounts = modelStore.getData().accounts
+		let selectedAccount = appStateStore.getState('selectedAccount')
+		
+		for (let id in accounts) {
+			let account = accounts[id]
+			let classString = 'nav-group-item'
+			if (id == selectedAccount) classString += ' active'
+
+			let navItem = (
+			  <span key={id} className={classString} onClick={this.listItemClick.bind(this, id)}>
+			    <small><strong>{account.name}</strong> <br/> ${account.balance}</small>
+			  </span>			
+			)
+
+			navItems.push(navItem)
+		}
+		
 
     return (
 			<nav className="nav-group">
 			
 			  <h5 className="nav-group-title">Checking and Credit</h5>
-			
-			  <span className="nav-group-item active">
-			    <small><strong>Cash CAD</strong> <br/> $56.32</small>
-			  </span>
-			  <span className="nav-group-item">
-			    <small><strong>TD Checking All-Inclusive</strong> <br/> $7556.75</small>
-			  </span>
-
-
-			  <h5 className="nav-group-title">Savings and Investments</h5>
-			
-			  <span className="nav-group-item">
-			    <small><strong>Cash CAD</strong> <br/> $56.32</small>
-			  </span>
-			  <span className="nav-group-item">
-			    <small><strong>TD Checking All-Inclusive</strong> <br/> $7556.75</small>
-			  </span>
-
-
+				{navItems}
 
 			</nav>
 			

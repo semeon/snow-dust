@@ -10,14 +10,11 @@ import {settingsStore} from '/app/stores/settings.js'
 console.log("[2] SETTINGS STORE LOADED")
 console.dir(settingsStore)
 
-
-
+import {modelStore} from '/app/stores/model.js'
+console.log("[3] MODEL STORE LOADED")
+console.dir(modelStore.getData())
 
 // import {modelStore} from '/app/stores/model.js'
-
-
-console.log("SO FAR SO GOOD 3")
-
 // console.dir(modelStore)
 
 let newAccount = {
@@ -32,5 +29,3 @@ let newAccount = {
 
 
 appStateStore.update()
-
-console.log("SO FAR SO GOOD 4")

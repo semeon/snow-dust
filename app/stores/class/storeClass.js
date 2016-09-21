@@ -18,7 +18,13 @@ export class Store {
 	}
 
 	applyChange() {
-		console.log("STORE: " + this.storeName + "Store: Render call")
-		renderer.render()
+		console.log("STORE: " + this.storeName + ": Render call")
+		
+		if (renderer) {
+			renderer.render()
+		} else {
+			console.log("STORE: " + this.storeName + ": There is no renderer yet")
+		}
+		
 	}
 }

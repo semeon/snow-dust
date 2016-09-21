@@ -13,7 +13,6 @@ class SettingsStore extends Store {
 
 	setDefaults() {
  		this.settings = jsonfile.readFileSync(appRoot.path + '/config/settings.json')
-		this.isLoaded = true		
 	}
 
 	getSettings() {

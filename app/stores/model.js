@@ -2,9 +2,11 @@ let appRoot = require('app-root-path')
 let jsonfile = require('jsonfile')
 
 import {Store} from './class/storeClass.js'
-import {settings} from './settings.js'
 
-import {Datafile} from './model/datafile.js'
+import {appStateStore} from './state.js'
+import {settingsStore} from './settings.js'
+
+// import {Datafile} from './model/datafile.js'
 
 
 class ModelStore extends Store {
@@ -16,9 +18,20 @@ class ModelStore extends Store {
   }
 
 	setDefaults() {
-		this.model = new Datafile()
+		// this.model = new Datafile()
+
+		console.log(settingsStore.settings)
+
+ 		this.model = jsonfile.readFileSync(settingsStore.settings.datafile)
+		
+		// console.log(this.model)
+		this.applyChange()
 	}
 
+	getData() {
+		return this.model
+	}
+	
 	createAccount(props) {
 		this.model.createAccount(props)
 		this.applyChange()
@@ -27,4 +40,4 @@ class ModelStore extends Store {
 
 }
 
-export let modelStore = new ModelStore('Model')
+export let modelStore = new ModelStore({name:'Model'})

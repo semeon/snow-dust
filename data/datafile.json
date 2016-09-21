@@ -1,0 +1,43 @@
+{
+	"id":"datafile001",
+	"accounts": {
+
+		"account-001": {
+			"name": "Cash CAD",
+			"type": "Cash",
+			"category": "Checking and Credit",
+			"balance": 137.12,
+			"currency": "CAD",
+			"updated": ""
+			
+		},
+
+		"account-002": {
+			"name": "TD Checking",
+			"type": "Debit",
+			"category": "Checking and Credit",
+			"balance": 7337.80,
+			"currency": "CAD",
+			"updated": ""
+		},
+
+		"account-003": {
+			"name": "TD MasterCard",
+			"type": "Credit",
+			"category": "Checking and Credit",
+			"balance": -12.56,
+			"currency": "CAD",
+			"updated": ""
+		},
+
+		"account-004": {
+			"name": "TD Saving",
+			"type": "Debit",
+			"category": "Savings and Investments",
+			"balance": 7020.56,
+			"currency": "CAD",
+			"updated": ""
+		}
+		
+	}
+}
