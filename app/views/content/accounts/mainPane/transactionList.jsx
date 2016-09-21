@@ -11,8 +11,12 @@ export class TransactionListView extends React.Component {
     super(props)
   }
 
+  editAccountClick() {
+		appStateStore.update('view', 'accounts-create-account')
+  }
+
+
   createTransactionClick() {
-		console.log('CLICK')
 		appStateStore.update('view', 'accounts-create-transaction')
   }
 
@@ -39,8 +43,8 @@ export class TransactionListView extends React.Component {
 			<div>
 
 				<div className="padded">
-					<p><strong>{selectedAccount.name}</strong> (${selectedAccount.balance} | {selectedAccount.type} | {selectedAccount.currency})
-					  <button className="btn btn-mini btn-default pull-right">
+					<p><strong>{selectedAccount.name}</strong> ${selectedAccount.balance} ({selectedAccount.type} | {selectedAccount.currency})
+						<button className="btn btn-mini btn-default pull-right"  onClick={this.editAccountClick.bind(this)}>
 							<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Account
 					  </button>
 					</p> 

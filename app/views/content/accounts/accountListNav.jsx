@@ -14,6 +14,7 @@ export class AccountListNavView extends React.Component {
 
 	listItemClick(accountId) {
 		appStateStore.update('selectedAccount', accountId)
+		appStateStore.update('view', 'accounts-transaction-list')
 	}
 
   render() {

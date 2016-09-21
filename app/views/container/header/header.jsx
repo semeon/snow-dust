@@ -10,15 +10,25 @@ export class HeaderView extends React.Component {
   constructor(props) {
     super(props)
   }
+	
+	datafileClick() {
+		appStateStore.update('view', 'config')
+	}
+
+	accountsClick() {
+		appStateStore.update('view', 'accounts-transaction-list')
+	}
+
 
   render() {
 		let datafilePath = settingsStore.getSettings().datafile
+		let currentView = appStateStore.getState('view')
 
 		let dbBtnClass = 'btn btn-default'
-		if (appStateStore.getState('view') == 'config' ) dbBtnClass += ' active'
+		if (currentView == 'config' ) dbBtnClass += ' active'
 
 		let accountsBtnClass = 'btn btn-default'
-		if (appStateStore.getState('view') == 'accounts' ) accountsBtnClass += ' active'
+		if (currentView.indexOf('accounts-') == 0 ) accountsBtnClass += ' active'
 
     return (
 		  <header className="toolbar toolbar-header">
@@ -26,10 +36,10 @@ export class HeaderView extends React.Component {
 
 				<div className="toolbar-actions">
 			    <div className="btn-group">
-			      <button className={dbBtnClass}>
+			      <button className={dbBtnClass} onClick={this.datafileClick.bind(this)}>
 			        <span className="icon icon-database"></span>
 			      </button>
-			      <button className={accountsBtnClass}>
+			      <button className={accountsBtnClass} onClick={this.accountsClick.bind(this)}>
 			        <span className="icon icon-list"></span>
 			      </button>
 			    </div>

@@ -9,13 +9,12 @@ class StateStore extends Store {
   }
 
 	setDefaults() {
-		// this.state.view = "config"
 		this.state.view = "accounts-transaction-list"
 		this.state.selectedAccount = ""
 	}
 
 	update(field, value) {
-		if (field && value) {
+		if (field) {
 			console.log("STORE: " + this.storeName + " Store Update:")
 			console.log("-- Field: " + field)
 			console.log("-- Value: " + value)

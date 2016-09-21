@@ -20,7 +20,7 @@ export class AccountsView extends React.Component {
 
 
   addAccountClick() {
-		console.log('CLICK')
+		appStateStore.update('selectedAccount', '')
 		appStateStore.update('view', 'accounts-create-account')
   }
 

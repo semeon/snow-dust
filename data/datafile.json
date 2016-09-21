@@ -3,9 +3,11 @@
 	"accounts": {
 
 		"account-001": {
+			"id": "account-001",
 			"name": "Cash CAD",
 			"type": "Cash",
 			"category": "Checking and Credit",
+			"startBalance": 0,
 			"balance": 137.12,
 			"currency": "CAD",
 			"updated": ""
@@ -13,27 +15,33 @@
 		},
 
 		"account-002": {
+			"id": "account-002",
 			"name": "TD Checking",
 			"type": "Debit",
 			"category": "Checking and Credit",
+			"startBalance": 0,
 			"balance": 7337.80,
 			"currency": "CAD",
 			"updated": ""
 		},
 
 		"account-003": {
+			"id": "account-003",
 			"name": "TD MasterCard",
 			"type": "Credit",
 			"category": "Checking and Credit",
+			"startBalance": 0,
 			"balance": -12.56,
 			"currency": "CAD",
 			"updated": ""
 		},
 
 		"account-004": {
+			"id": "account-004",
 			"name": "TD Saving",
 			"type": "Debit",
 			"category": "Savings and Investments",
+			"startBalance": 0,
 			"balance": 7020.56,
 			"currency": "CAD",
 			"updated": ""
