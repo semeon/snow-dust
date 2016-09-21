@@ -32,7 +32,14 @@ export class AccountsView extends React.Component {
 		let currentView = appStateStore.getState('view')
 		
 		if (currentView == 'accounts-transaction-list') {
-			mainPane = <TransactionListView />
+			
+			let selectedAccountId = appStateStore.getState('selectedAccount')
+
+			if (selectedAccountId) {
+				mainPane = <TransactionListView />
+			} else {
+				mainPane = <div className="padded-more">Please choose the account</div>
+			}
 
 
 		} else if (currentView == 'accounts-create-account') {
@@ -45,8 +52,7 @@ export class AccountsView extends React.Component {
 		} else {
 			mainPane = stub
 
-		}    
-
+		} 
 
     return (
 			

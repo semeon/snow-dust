@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 
 import {appStateStore} from '/app/stores/state.js'
 import {settingsStore} from '/app/stores/settings.js'
-
+import {modelStore} from '/app/stores/model.js'
 
 export class TransactionListView extends React.Component {
 
@@ -30,20 +30,27 @@ export class TransactionListView extends React.Component {
 	    </tr>			
 		)
 
-
+		let selectedAccountId = appStateStore.getState('selectedAccount')
+		let selectedAccount = modelStore.getData().accounts[selectedAccountId]
+		
     return (
-			
 
-			<div className="">
+
+			<div>
 
 				<div className="padded">
-				  <button className="btn btn-mini btn-default" onClick={this.createTransactionClick.bind(this)}>
+					<p><strong>{selectedAccount.name}</strong> (${selectedAccount.balance} | {selectedAccount.type} | {selectedAccount.currency})
+					  <button className="btn btn-mini btn-default pull-right">
+							<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Account
+					  </button>
+					</p> 
+				</div>
+
+				<div className="padded">
+				  <button className="btn btn-mini btn-primary" onClick={this.createTransactionClick.bind(this)}>
 						<span className="icon icon-plus icon-text"></span> &nbsp; Add Transaction
 				  </button>
 
-				  <button className="btn btn-mini btn-default pull-right">
-						<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Account
-				  </button>
 				</div>
 
 				<table className="table-striped">
