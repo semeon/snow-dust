@@ -1,4 +1,3 @@
-let moment = require('moment')
 import React from 'react';
 import {render} from 'react-dom';
 
@@ -22,7 +21,9 @@ export class EditAccountView extends React.Component {
 	
 	generateAccountObject() {
 		let account = {
-			accountId: "account-" + moment().valueOf() // REFACTOR: Move to id generating the model
+			accountType: "Cash", //REFACTOR to take defaults from settings
+			accountCurrency: "CAD",  //REFACTOR to take defaults from settings
+			accountStartBalance : 0
 		}
 		
 		let selectedAccountId = appStateStore.getState('selectedAccount')
@@ -48,6 +49,12 @@ export class EditAccountView extends React.Component {
   }
 	
   saveAccountClick() {
+		let newAccountId = modelStore.createAccount(this.state)
+		console.log('new account ID: ' + newAccountId)
+
+		console.dir(modelStore.getData())
+
+		appStateStore.update('selectedAccount', newAccountId)
 		appStateStore.update('view', 'accounts-transaction-list')
   }
   cancelAccountClick() {
@@ -63,10 +70,10 @@ export class EditAccountView extends React.Component {
 		if (this.state.accountExists) title = "Edit Account: " + this.state.accountPrevName
 
 		let accountName = this.state.accountName ? this.state.accountName : ""
-		let accountType = this.state.accountType ? this.state.accountType : "Cash" //REFACTOR to take defaults from settings
+		let accountType = this.state.accountType ? this.state.accountType : ""
 		let accountGroup = this.state.accountGroup ? this.state.accountGroup : ""
-		let accountStartBalance = this.state.accountStartBalance ? this.state.accountStartBalance : ""
-		let accountCurrency = this.state.accountCurrency ? this.state.accountCurrency : "CAD"  //REFACTOR to take defaults from settings
+		let accountStartBalance = this.state.accountStartBalance ? this.state.accountStartBalance : 0
+		let accountCurrency = this.state.accountCurrency ? this.state.accountCurrency : ""
 
 		console.dir(this.state)
 
@@ -133,7 +140,7 @@ export class EditAccountView extends React.Component {
 			      Cancel
 			    </button>
 
-			    <button className="btn btn-primary pull-right" onClick={this.cancelAccountClick.bind(this)}>
+			    <button className="btn btn-primary pull-right" onClick={this.saveAccountClick.bind(this)}>
 			      Save
 			    </button>
 			  </div>

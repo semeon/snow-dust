@@ -1,19 +1,31 @@
+let moment = require('moment')
 import {AuditLogger} from './auditLogger.js'
 
-export class Account extends AuditLogger {
+export class AccountModel extends AuditLogger {
 
   constructor(props) {
     super(props)		
-
-		this.id = props.id
-		this.name = props.name
-		this.currency = props.currency
-		this.currencyIcon
-		this.startBalance = props.startBalance
-		this.type = props.type
-		this.balance = 0
   }
 
+	createAccountDataRecord(props) {
+		let account = {
+				id: this.generateId(),
+				name: props.accountName,
+				type: props.accountType,
+				group: props.accountGroup,
+				startBalance: props.accountStartBalance,
+				currency: props.accountCurrency,
+				balance: 0
+		}
+		
+		return account
+	}
+
+	generateId() {
+		let id = ""
+		id = "account-id-" + moment().valueOf()
+		return id
+	}
 
 	update() {
 		this.audit()
