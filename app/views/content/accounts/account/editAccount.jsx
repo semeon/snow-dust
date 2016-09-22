@@ -11,11 +11,22 @@ export class EditAccountView extends React.Component {
 
   constructor(props) {
     super(props)
+		let account = this.generateAccountObject()
+		this.state = account
+  }
+
+	componentWillReceiveProps() {
+		let account = this.generateAccountObject()
+		this.state = account
+	}
+	
+	generateAccountObject() {
 		let account = {
 			accountId: "account-" + moment().valueOf() // REFACTOR: Move to id generating the model
 		}
 		
 		let selectedAccountId = appStateStore.getState('selectedAccount')
+		
 		if (selectedAccountId && selectedAccountId.length > 0) {
 			let acc = modelStore.getData().accounts[selectedAccountId]
 			account = {
@@ -24,11 +35,13 @@ export class EditAccountView extends React.Component {
 				accountType: acc.type,
 				accountGroup: acc.group,
 				accountStartBalance: acc.startBalance,
-				accountCurrency: acc.currency
+				accountCurrency: acc.currency,
+				accountExists: true,
+				accountPrevName: acc.name
 			}
-		}
-		this.state = account
-  }
+		}		
+		return account
+	}
 
   onFieldChange(event) {
 		this.setState({[event.target.name]: event.target.value})
@@ -43,16 +56,19 @@ export class EditAccountView extends React.Component {
 
 
 
+
+
   render() {
 		let title = "Create New Account"
+		if (this.state.accountExists) title = "Edit Account: " + this.state.accountPrevName
 
-		let accountName = this.state.accountName
-		let accountType = this.state.accountType
-		let accountGroup = this.state.accountGroup
-		let accountStartBalance = this.state.accountStartBalance
-		let accountCurrency = this.state.accountCurrency
+		let accountName = this.state.accountName ? this.state.accountName : ""
+		let accountType = this.state.accountType ? this.state.accountType : "Cash" //REFACTOR to take defaults from settings
+		let accountGroup = this.state.accountGroup ? this.state.accountGroup : ""
+		let accountStartBalance = this.state.accountStartBalance ? this.state.accountStartBalance : ""
+		let accountCurrency = this.state.accountCurrency ? this.state.accountCurrency : "CAD"  //REFACTOR to take defaults from settings
 
-		// console.dir(this.state)
+		console.dir(this.state)
 
     return (
 			<div className="padded-more">
@@ -62,7 +78,7 @@ export class EditAccountView extends React.Component {
 				  <div className="form-group">
 				    <label>Account Name</label>
 				    <input name="accountName" type="text"	
-							className="form-control"	placeholder="Account Name" 
+							className="form-control"	placeholder="Account Name"
 							value={accountName} onChange={this.onFieldChange.bind(this)} 
 							></input>
 				  </div>
