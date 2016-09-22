@@ -5,7 +5,7 @@ import {appStateStore} from '/app/stores/state.js'
 import {settingsStore} from '/app/stores/settings.js'
 
 
-export class CreateTransactionView extends React.Component {
+export class EditTransactionView extends React.Component {
 
   constructor(props) {
     super(props)

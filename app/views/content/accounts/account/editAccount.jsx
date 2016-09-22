@@ -12,7 +12,7 @@ export class EditAccountView extends React.Component {
   constructor(props) {
     super(props)
 		let account = {
-			accountId: "account-" + moment().valueOf()
+			accountId: "account-" + moment().valueOf() // REFACTOR: Move to id generating the model
 		}
 		
 		let selectedAccountId = appStateStore.getState('selectedAccount')

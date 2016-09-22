@@ -9,7 +9,7 @@ import {AccountListNavView} from './accountListNav.jsx'
 import {EditAccountView} from './account/editAccount.jsx'
 import {TransactionListView} from './account/transactionList.jsx'
 
-import {CreateTransactionView} from './transaction/createTransaction.jsx'
+import {EditTransactionView} from './transaction/editTransaction.jsx'
 
 
 
@@ -22,7 +22,7 @@ export class AccountsView extends React.Component {
 
   addAccountClick() {
 		appStateStore.update('selectedAccount', '')
-		appStateStore.update('view', 'accounts-create-account')
+		appStateStore.update('view', 'accounts-edit-account')
   }
 
 
@@ -43,11 +43,11 @@ export class AccountsView extends React.Component {
 			}
 
 
-		} else if (currentView == 'accounts-create-account') {
+		} else if (currentView == 'accounts-edit-account') {
 			mainPane = <EditAccountView />
 
-		} else if (currentView == 'accounts-create-transaction') {
-			mainPane = <CreateTransactionView />
+		} else if (currentView == 'accounts-edit-transaction') {
+			mainPane = <EditTransactionView />
 
 
 		} else {

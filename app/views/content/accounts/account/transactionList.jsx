@@ -12,18 +12,46 @@ export class TransactionListView extends React.Component {
   }
 
   editAccountClick() {
-		appStateStore.update('view', 'accounts-create-account')
+		appStateStore.update('view', 'accounts-edit-account')
   }
-
 
   createTransactionClick() {
-		appStateStore.update('view', 'accounts-create-transaction')
+		appStateStore.update('selectedTransaction', '')
+		appStateStore.update('view', 'accounts-edit-transaction')
   }
+
+  // transactionSingleClick(transactionId, event) {
+  // 		appStateStore.update('selectedTransaction', transactionId)
+  // }
+
+  transactionDoubleClick(transactionId, event) {
+		// appStateStore.update('selectedTransaction', transactionId)
+		appStateStore.update('view', 'accounts-edit-transaction')
+  }
+
 
   render() {
 
+		let sampleRow1 = (
+	    <tr id="transaction-id-001" 
+				className="active"
+				onDoubleClick={this.transactionDoubleClick.bind(this, 'transaction-id-001')}
+				>
+	      <td>2016-09-19</td>
+	      <td>AAA Market</td>
+	      <td>Grocery: Food</td>
+	      <td>21.15</td>
+	      <td>0</td>
+	      <td>722.15</td>
+	      <td>Fruits and veggies</td>
+	    </tr>			
+		)
+
+
 		let sampleRow = (
-	    <tr>
+	    <tr 
+				onDoubleClick={this.transactionDoubleClick.bind(this)}
+				>
 	      <td>2016-09-19</td>
 	      <td>AAA Market</td>
 	      <td>Grocery: Food</td>
@@ -54,6 +82,10 @@ export class TransactionListView extends React.Component {
 				  <button className="btn btn-mini btn-primary" onClick={this.createTransactionClick.bind(this)}>
 						<span className="icon icon-plus icon-text"></span> &nbsp; Add Transaction
 				  </button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+				  <button className="btn btn-mini btn-default" onClick={this.createTransactionClick.bind(this)}>
+						<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Transaction
+				  </button>
 
 				</div>
 
@@ -71,7 +103,7 @@ export class TransactionListView extends React.Component {
 				  </thead>
 				  <tbody>
 			
-						{sampleRow}
+						{sampleRow1}
 						{sampleRow}
 						{sampleRow}
 						{sampleRow}
