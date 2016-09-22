@@ -1,3 +1,4 @@
+let moment = require('moment')
 import React from 'react';
 import {render} from 'react-dom';
 
@@ -10,30 +11,48 @@ export class CreateAccountView extends React.Component {
 
   constructor(props) {
     super(props)
+		let account = {
+			accountId: "account-" + moment().valueOf()
+		}
+		
+		let selectedAccountId = appStateStore.getState('selectedAccount')
+		if (selectedAccountId && selectedAccountId.length > 0) {
+			let acc = modelStore.getData().accounts[selectedAccountId]
+			account = {
+				accountId: acc.id,
+				accountName: acc.name,
+				accountType: acc.type,
+				accountGroup: acc.group,
+				accountStartBalance: acc.startBalance,
+				accountCurrency: acc.currency
+			}
+		}
+		this.state = account
+  }
+
+  onFieldChange(event) {
+		this.setState({[event.target.name]: event.target.value})
   }
 	
   saveAccountClick() {
 		appStateStore.update('view', 'accounts-transaction-list')
   }
-
-
   cancelAccountClick() {
 		appStateStore.update('view', 'accounts-transaction-list')
   }
 
+
+
   render() {
 		let title = "Create New Account"
-		let account = {}
 
-		// READ
-		// http://stackoverflow.com/questions/30146105/react-input-defaultvalue-doesnt-update-with-state
+		let accountName = this.state.accountName
+		let accountType = this.state.accountType
+		let accountGroup = this.state.accountGroup
+		let accountStartBalance = this.state.accountStartBalance
+		let accountCurrency = this.state.accountCurrency
 
-		let selectedAccountId = appStateStore.getState('selectedAccount')
-		if (selectedAccountId && selectedAccountId.length > 0) {
-			account = modelStore.getData().accounts[selectedAccountId]
-			title = "Edit Account (ID: " + account.id + ", Name: " + account.name + ")"
-		}
-
+		// console.dir(this.state)
 
     return (
 			<div className="padded-more">
@@ -42,12 +61,18 @@ export class CreateAccountView extends React.Component {
 				<form>
 				  <div className="form-group">
 				    <label>Account Name</label>
-				    <input className="form-control" placeholder="Account Name" defaultValue={account.name}></input>
+				    <input name="accountName" type="text"	
+							className="form-control"	placeholder="Account Name" 
+							value={accountName} onChange={this.onFieldChange.bind(this)} 
+							></input>
 				  </div>
 
 				  <div className="form-group">
 				    <label>Account Type</label>
-					  <select className="form-control" defaultValue={account.type}>
+					  <select	name="accountType" type="text" 
+							className="form-control" 
+							value={accountType} onChange={this.onFieldChange.bind(this)} 
+							>
 					    <option>Cash</option>
 					    <option>Checking</option>
 					    <option>Credit</option>
@@ -56,27 +81,34 @@ export class CreateAccountView extends React.Component {
 				  </div>
 
 				  <div className="form-group">
-				    <label>Account Category</label>
-				    <input className="form-control" placeholder="Account Category" defaultValue={account.category}></input>
+				    <label>Account Group</label>
+				    <input name="accountGroup" type="text" 
+							className="form-control" placeholder="Account Group" 
+							value={accountGroup} onChange={this.onFieldChange.bind(this)} 
+							></input>
 				  </div>
 
 				  <div className="form-group">
 				    <label>Starting Ballance</label>
-				    <input className="form-control" placeholder="0.00" defaultValue={account.startBalance}></input>
+				    <input name="accountStartBalance"	type="number" 
+							className="form-control" placeholder="0.00"
+							value={accountStartBalance}	onChange={this.onFieldChange.bind(this)} 
+							></input>
 				  </div>
 
 				  <div className="form-group">
 				    <label>Currecy</label>
-					  <select className="form-control"  defaultValue={account.currency}>
+ 					  <select	name="accountCurrency" type="text"							
+							className="form-control"  
+							value={accountCurrency}	onChange={this.onFieldChange.bind(this)} 							
+							>
 					    <option>CAD</option>
 					    <option>EUR</option>
 					    <option>RUR</option>
 					    <option>USD</option>
-					  </select>
+ 					  </select>
 				  </div>
 				</form>		
-			
-		
 
 				<hr/>
 
