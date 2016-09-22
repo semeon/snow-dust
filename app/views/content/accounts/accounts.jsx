@@ -6,10 +6,11 @@ import {settingsStore} from '/app/stores/settings.js'
 
 import {AccountListNavView} from './accountListNav.jsx'
 
-import {CreateAccountView} from './mainPane/createAccount.jsx'
-import {CreateTransactionView} from './mainPane/createTransaction.jsx'
+import {EditAccountView} from './account/editAccount.jsx'
+import {TransactionListView} from './account/transactionList.jsx'
 
-import {TransactionListView} from './mainPane/transactionList.jsx'
+import {CreateTransactionView} from './transaction/createTransaction.jsx'
+
 
 
 export class AccountsView extends React.Component {
@@ -43,7 +44,7 @@ export class AccountsView extends React.Component {
 
 
 		} else if (currentView == 'accounts-create-account') {
-			mainPane = <CreateAccountView />
+			mainPane = <EditAccountView />
 
 		} else if (currentView == 'accounts-create-transaction') {
 			mainPane = <CreateTransactionView />

@@ -7,7 +7,7 @@ import {settingsStore} from '/app/stores/settings.js'
 import {modelStore} from '/app/stores/model.js'
 
 
-export class CreateAccountView extends React.Component {
+export class EditAccountView extends React.Component {
 
   constructor(props) {
     super(props)
