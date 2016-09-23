@@ -49,14 +49,12 @@ export class EditAccountView extends React.Component {
   }
 	
   saveAccountClick() {
-		let newAccountId = modelStore.createAccount(this.state)
-		console.log('new account ID: ' + newAccountId)
-
-		console.dir(modelStore.getData())
-
-		appStateStore.update('selectedAccount', newAccountId)
+		let accountId = modelStore.saveAccount(this.state)
+		console.log('new account ID: ' + accountId)
+		if (!this.state.accountExists) appStateStore.update('selectedAccount', accountId)
 		appStateStore.update('view', 'accounts-transaction-list')
   }
+
   cancelAccountClick() {
 		appStateStore.update('view', 'accounts-transaction-list')
   }

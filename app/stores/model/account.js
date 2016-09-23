@@ -8,16 +8,16 @@ export class AccountModel extends AuditLogger {
   }
 
 	createAccountDataRecord(props) {
-		let account = {
-				id: this.generateId(),
-				name: props.accountName,
-				type: props.accountType,
-				group: props.accountGroup,
-				startBalance: props.accountStartBalance,
-				currency: props.accountCurrency,
-				balance: 0
-		}
-		
+		let account = {}
+
+		account.id = props.accountId ? props.accountId : this.generateId()
+		account.name = props.accountName
+		account.type = props.accountType
+		account.group = props.accountGroup
+		account.startBalance = props.accountStartBalance
+		account.currency = props.accountCurrency
+		account.balance = this.reconcileBalance()
+		account.updated = moment().toJSON()
 		return account
 	}
 
@@ -25,6 +25,10 @@ export class AccountModel extends AuditLogger {
 		let id = ""
 		id = "account-id-" + moment().valueOf()
 		return id
+	}
+
+	reconcileBalance() {
+		return 0
 	}
 
 	update() {

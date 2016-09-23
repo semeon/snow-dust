@@ -36,7 +36,7 @@ class ModelStore extends Store {
 		return this.data
 	}
 	
-	createAccount(props) {
+	saveAccount(props) {
 		let account = this.accountModel.createAccountDataRecord(props)
 		let id = account.id
 		this.data.accounts[id] = account
