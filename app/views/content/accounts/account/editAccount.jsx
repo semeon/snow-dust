@@ -59,6 +59,11 @@ export class EditAccountView extends React.Component {
 		appStateStore.update('view', 'accounts-transaction-list')
   }
 
+  deleteAccountClick() {
+		modelStore.deleteAccount({id: this.state.accountId})
+		appStateStore.update('selectedAccount', '')		
+		appStateStore.update('view', 'accounts-transaction-list')
+  }
 
 
 
@@ -134,6 +139,10 @@ export class EditAccountView extends React.Component {
 				<hr/>
 
 				<div className="toolbar-actions">
+			    <button className="btn btn-negative" onClick={this.deleteAccountClick.bind(this)}>
+			      Delete Account
+			    </button>
+
 			    <button className="btn btn-default pull-right" onClick={this.cancelAccountClick.bind(this)}>
 			      Cancel
 			    </button>

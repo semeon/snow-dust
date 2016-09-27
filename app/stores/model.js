@@ -45,6 +45,13 @@ class ModelStore extends Store {
 		return account.id
 	}
 
+	deleteAccount(props) {
+		// console.log("Deleting account: " + props.id)
+		delete this.data.accounts[props.id]
+		this.saveDataToFile()
+		this.applyChange()
+	}
+
 	saveDataToFile() {
 		let datafilePath = settingsStore.getSettings().datafile
 		if (datafilePath && this.data) {
