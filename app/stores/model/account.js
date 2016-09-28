@@ -24,6 +24,7 @@ export class AccountModel extends AuditLogger {
 	generateId() {
 		let id = ""
 		id = "account-id-" + moment().valueOf()
+		// TODO: TEST FOR UNIQUENESS
 		return id
 	}
 
