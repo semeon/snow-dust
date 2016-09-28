@@ -11,6 +11,16 @@ export class TransactionModel extends AuditLogger {
 		let transaction = {}
 
 		transaction.id = props.transactionId ? props.transactionId : this.generateId()
+		transaction.date = props.transactionDate
+		transaction.amount = props.transactionAmount
+		transaction.accountId = props.accountId
+		transaction.type = props.transactionType
+		transaction.status = props.transactionStatus
+
+
+		transaction.category = props.transactionCategory
+		transaction.subcategory = props.transactionSubcategory
+		transaction.notes = props.transactionNotes
 
 		transaction.updated = moment().toJSON()
 		return transaction
