@@ -10,8 +10,7 @@ export class EditAccountView extends React.Component {
 
   constructor(props) {
     super(props)
-		let account = this.generateAccountObject()
-		this.state = account
+		this.state = this.generateAccountObject()
   }
 
 	componentWillReceiveProps() {
@@ -20,14 +19,17 @@ export class EditAccountView extends React.Component {
 	}
 	
 	generateAccountObject() {
+
+		let selectedAccountId = appStateStore.getState('selectedAccount')
+
+		// Create blank
 		let account = {
 			accountType: "Cash", //REFACTOR to take defaults from settings
 			accountCurrency: "CAD",  //REFACTOR to take defaults from settings
 			accountStartBalance : 0
 		}
-		
-		let selectedAccountId = appStateStore.getState('selectedAccount')
-		
+
+		// Or load existing		
 		if (selectedAccountId && selectedAccountId.length > 0) {
 			let acc = modelStore.getData().accounts[selectedAccountId]
 			account = {
