@@ -11,6 +11,7 @@ class StateStore extends Store {
 	setDefaults() {
 		this.state.view = "accounts-transaction-list"
 		this.state.selectedAccount = ""
+		this.state.selectedTransaction = ""
 	}
 
 	update(field, value) {
