@@ -36,6 +36,25 @@ class ModelStore extends Store {
 		return this.data
 	}
 
+	getAccounts(accountId) {
+		return this.data.accounts[accountId]
+	}
+
+	getTransactions(accountId) {
+		let result = {}
+		
+		for (let i in this.data.transactions) {
+			let transaction = this.data.transactions[i]
+			if (transaction.accountId == accountId) {
+				result[i] = transaction
+			}
+		}
+		
+		return result
+	}
+
+
+
 	saveTransaction(props) {
 		let account = this.accountModel.createAccountDataRecord(props)
 		let id = account.id

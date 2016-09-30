@@ -32,38 +32,42 @@ export class TransactionListView extends React.Component {
 
   render() {
 
-		let sampleRow1 = (
-	    <tr id="transaction-id-001" 
-				className="active"
-				onDoubleClick={this.transactionDoubleClick.bind(this, 'transaction-id-001')}
-				>
-	      <td>2016-09-19</td>
-	      <td>AAA Market</td>
-	      <td>Grocery: Food</td>
-	      <td>21.15</td>
-	      <td>0</td>
-	      <td>722.15</td>
-	      <td>Fruits and veggies</td>
-	    </tr>			
-		)
-
-
-		let sampleRow = (
-	    <tr 
-				onDoubleClick={this.transactionDoubleClick.bind(this)}
-				>
-	      <td>2016-09-19</td>
-	      <td>AAA Market</td>
-	      <td>Grocery: Food</td>
-	      <td>21.15</td>
-	      <td>0</td>
-	      <td>722.15</td>
-	      <td>Fruits and veggies</td>
-	    </tr>			
-		)
 
 		let selectedAccountId = appStateStore.getState('selectedAccount')
-		let selectedAccount = modelStore.getData().accounts[selectedAccountId]
+		let selectedAccount = modelStore.getAccounts(selectedAccountId)
+		let transactions = modelStore.getTransactions(selectedAccountId)
+
+
+		let transactionListItems = []
+		
+		for (let i in transactions) {
+			let transaction = transactions[i]
+			
+			let withdraw = 0
+			let debit = 0
+			
+			if (transaction.type == "Withdrawal") withdraw = transaction.amount
+			if (transaction.type == "Debit") debit = transaction.amount
+			
+			let listItem = (
+		    <tr id={transaction.id}
+					key={transaction.id}
+					className="active"
+					onDoubleClick={this.transactionDoubleClick.bind(this, transaction.id)}
+					>
+		      <td>{transaction.date}</td>
+		      <td>{transaction.category}: {transaction.category}</td>
+		      <td>{debit}</td>
+		      <td>{withdraw}</td>
+		      <td>0</td>
+		      <td>{transaction.notes}</td>
+		    </tr>	
+			) 
+
+			transactionListItems.push(listItem)
+		}
+
+		
 		
     return (
 
@@ -93,7 +97,6 @@ export class TransactionListView extends React.Component {
 				  <thead>
 				    <tr>
 				      <th>Date</th>
-				      <th>Payee</th>
 				      <th>Category</th>
 				      <th>Credit</th>
 				      <th>Debit</th>
@@ -102,12 +105,7 @@ export class TransactionListView extends React.Component {
 				    </tr>
 				  </thead>
 				  <tbody>
-			
-						{sampleRow1}
-						{sampleRow}
-						{sampleRow}
-						{sampleRow}
-			
+						{transactionListItems}
 				  </tbody>
 				</table>
 
