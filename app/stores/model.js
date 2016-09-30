@@ -36,7 +36,7 @@ class ModelStore extends Store {
 		return this.data
 	}
 
-	getAccounts(accountId) {
+	getAccount(accountId) {
 		return this.data.accounts[accountId]
 	}
 

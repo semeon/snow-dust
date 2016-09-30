@@ -34,7 +34,7 @@ export class TransactionListView extends React.Component {
 
 
 		let selectedAccountId = appStateStore.getState('selectedAccount')
-		let selectedAccount = modelStore.getAccounts(selectedAccountId)
+		let selectedAccount = modelStore.getAccount(selectedAccountId)
 		let transactions = modelStore.getTransactions(selectedAccountId)
 
 
