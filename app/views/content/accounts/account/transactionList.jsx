@@ -20,9 +20,9 @@ export class TransactionListView extends React.Component {
 		appStateStore.update('view', 'accounts-edit-transaction')
   }
 
-  // transactionSingleClick(transactionId, event) {
-  // 		appStateStore.update('selectedTransaction', transactionId)
-  // }
+  transactionSingleClick(transactionId, event) {
+  		appStateStore.update('selectedTransaction', transactionId)
+  }
 
   transactionDoubleClick(transactionId, event) {
 		// appStateStore.update('selectedTransaction', transactionId)
@@ -53,6 +53,7 @@ export class TransactionListView extends React.Component {
 		    <tr id={transaction.id}
 					key={transaction.id}
 					className="active"
+					onClick={this.transactionSingleClick.bind(this, transaction.id)}
 					onDoubleClick={this.transactionDoubleClick.bind(this, transaction.id)}
 					>
 		      <td>{transaction.date}</td>
