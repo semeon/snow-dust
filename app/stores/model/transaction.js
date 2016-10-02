@@ -17,7 +17,6 @@ export class TransactionModel extends AuditLogger {
 		transaction.type = props.transactionType
 		transaction.status = props.transactionStatus
 
-
 		transaction.category = props.transactionCategory
 		transaction.subcategory = props.transactionSubcategory
 		transaction.notes = props.transactionNotes
