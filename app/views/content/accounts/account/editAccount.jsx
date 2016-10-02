@@ -50,18 +50,18 @@ export class EditAccountView extends React.Component {
 		this.setState({[event.target.name]: event.target.value})
   }
 	
-  saveAccountClick() {
+  saveClick() {
 		let accountId = modelStore.saveAccount(this.state)
 		console.log('new account ID: ' + accountId)
 		if (!this.state.accountExists) appStateStore.update('selectedAccount', accountId)
 		appStateStore.update('view', 'accounts-transaction-list')
   }
 
-  cancelAccountClick() {
+  cancelClick() {
 		appStateStore.update('view', 'accounts-transaction-list')
   }
 
-  deleteAccountClick() {
+  deleteClick() {
 		modelStore.deleteAccount({id: this.state.accountId})
 		appStateStore.update('selectedAccount', '')		
 		appStateStore.update('view', 'accounts-transaction-list')
@@ -141,15 +141,15 @@ export class EditAccountView extends React.Component {
 				<hr/>
 
 				<div className="toolbar-actions">
-			    <button className="btn btn-negative" onClick={this.deleteAccountClick.bind(this)}>
+			    <button className="btn btn-negative" onClick={this.deleteClick.bind(this)}>
 			      Delete Account
 			    </button>
 
-			    <button className="btn btn-default pull-right" onClick={this.cancelAccountClick.bind(this)}>
+			    <button className="btn btn-default pull-right" onClick={this.cancelClick.bind(this)}>
 			      Cancel
 			    </button>
 
-			    <button className="btn btn-primary pull-right" onClick={this.saveAccountClick.bind(this)}>
+			    <button className="btn btn-primary pull-right" onClick={this.saveClick.bind(this)}>
 			      Save
 			    </button>
 			  </div>

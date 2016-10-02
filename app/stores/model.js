@@ -9,6 +9,7 @@ import {settingsStore} from './settings.js'
 
 // import {Datafile} from './model/datafile.js'
 import {AccountModel} from './model/account.js'
+import {TransactionModel} from './model/transaction.js'
 
 
 class ModelStore extends Store {
@@ -16,6 +17,7 @@ class ModelStore extends Store {
   constructor(props) {
     super(props)
 		this.accountModel = new AccountModel()
+		this.transactionModel = new TransactionModel()
 		this.data = {}
 		this.setDefaults()
   }
@@ -36,6 +38,8 @@ class ModelStore extends Store {
 		return this.data
 	}
 
+
+	// ACCOUNTS
 	getAccount(accountId) {
 		return this.data.accounts[accountId]
 	}
@@ -44,10 +48,25 @@ class ModelStore extends Store {
 		return this.data.accounts
 	}
 
+	saveAccount(props) {
+		let account = this.accountModel.createAccountDataRecord(props)
+		let id = account.id
+		this.data.accounts[id] = account
+		this.saveDataToFile()
+		this.applyChange()
+		return account.id
+	}
+
+	deleteAccount(props) {
+		delete this.data.accounts[props.id]
+		this.saveDataToFile()
+		this.applyChange()
+	}
+
+	// TRANSACTIONS
 	getTransaction(transactionId) {
 		return this.data.transactions[transactionId]
 	}
-
 
 	getTransactions(accountId) {
 		let result = {}
@@ -62,33 +81,17 @@ class ModelStore extends Store {
 		return result
 	}
 
-
-
 	saveTransaction(props) {
-		let account = this.accountModel.createAccountDataRecord(props)
-		let id = account.id
-		this.data.accounts[id] = account
+		let transaction = this.transactionModel.createTransactionDataRecord(props)
+		let id = transaction.id
+		this.data.transactions[id] = transaction
 		this.saveDataToFile()
 		this.applyChange()
-		return account.id
+		return transaction.id
 	}
 	
-	saveAccount(props) {
-		let account = this.accountModel.createAccountDataRecord(props)
-		let id = account.id
-		this.data.accounts[id] = account
-		this.saveDataToFile()
-		this.applyChange()
-		return account.id
-	}
 
-	deleteAccount(props) {
-		// console.log("Deleting account: " + props.id)
-		delete this.data.accounts[props.id]
-		this.saveDataToFile()
-		this.applyChange()
-	}
-
+	// DATAFILE
 	saveDataToFile() {
 		let datafilePath = settingsStore.getSettings().datafile
 		if (datafilePath && this.data) {

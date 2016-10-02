@@ -27,6 +27,7 @@ class StateStore extends Store {
 				case 'selectedAccount':
 					if (this.state.selectedAccount != value) this.state.selectedTransaction = ""
 					break
+
 				default:
 			}
 

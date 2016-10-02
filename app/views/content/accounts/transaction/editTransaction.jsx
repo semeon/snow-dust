@@ -24,6 +24,7 @@ export class EditTransactionView extends React.Component {
 		// Create blank
 		let transaction = {
 			accountId: selectedAccountId,
+			transactionAmount: 0,
 			transactionType: "Withdrawal", //REFACTOR to take defaults from settings
 			transactionCategory: "",
 			transactionSubcategory: "",
@@ -53,10 +54,23 @@ export class EditTransactionView extends React.Component {
 		this.setState({[event.target.name]: event.target.value})
   }
 
-  cancelClick() {
-		console.log('CLICK')
+  saveClick() {
+		let transactionId = modelStore.saveTransaction(this.state)
+		appStateStore.update('selectedAccount', this.state.accountId)
+		appStateStore.update('selectedTransaction', transactionId)
 		appStateStore.update('view', 'accounts-transaction-list')
   }
+
+  cancelClick() {
+		appStateStore.update('view', 'accounts-transaction-list')
+  }
+
+  deleteClick() {
+		// modelStore.deleteAccount({id: this.state.accountId})
+		// appStateStore.update('selectedAccount', '')
+		// appStateStore.update('view', 'accounts-transaction-list')
+  }
+	
 
   render() {
 
@@ -68,11 +82,20 @@ export class EditTransactionView extends React.Component {
 
 		let transactionDate = this.state.transactionDate ? this.state.transactionDate : ""
 		let transactionType = this.state.transactionType ? this.state.transactionType : "" 
-
+		let accountId = this.state.accountId ? this.state.accountId : ""
+		let transactionAmount = this.state.transactionAmount ? this.state.transactionAmount : 0
+		let transactionNotes = this.state.transactionNotes ? this.state.transactionNotes : ""
 
 		console.log("--- CREATE/EDIT TRANSACTION VIEW ---")
-		console.log("selectedTransactionId: ", selectedTransactionId)
-		console.log("transactionDate: ", transactionDate)
+		console.dir(this.state)
+
+		let accounts = modelStore.getAccounts()
+		let accountSelectOptions = []
+		for (let i in accounts) {
+			let acc = accounts[i]
+			let optionNode = <option key={acc.id} value={acc.id}>{acc.name} ({acc.type}, {acc.currency})</option>
+			accountSelectOptions.push(optionNode)
+		}
 
 
     return (
@@ -106,7 +129,12 @@ export class EditTransactionView extends React.Component {
 
 				  <div className="form-group">
 				    <label>Account</label>
-				    <input className="form-control" placeholder="Account"></input>
+					  <select	name="accountId" type="text" 
+							className="form-control" 
+							value={accountId} onChange={this.onFieldChange.bind(this)} 
+							>
+							{accountSelectOptions}
+					  </select>
 				  </div>
 
 				  <div className="form-group">
@@ -117,7 +145,7 @@ export class EditTransactionView extends React.Component {
 							></input>									
 				  </div>
 
-
+					{/*
 
 				  <div className="form-group">
 				    <label>Payee</label>
@@ -134,14 +162,23 @@ export class EditTransactionView extends React.Component {
 				    <input className="form-control" placeholder="Subcategory"></input>
 				  </div>
 
-				  <div className="form-group">
-				    <label>Amount</label>
-				    <input className="form-control" placeholder="Subcategory"></input>
-				  </div>
+					*/}
 
 				  <div className="form-group">
-				    <label>Comment</label>
-				    <input className="form-control" placeholder="Comment"></input>
+				    <label>Amount</label>
+				    <input name="transactionAmount"	type="number" 
+							className="form-control" placeholder="0.00"
+							value={transactionAmount}	onChange={this.onFieldChange.bind(this)} 
+							></input>
+				  </div>
+						
+
+				  <div className="form-group">
+				    <label>Notes</label>
+				    <input name="transactionNotes" type="text"	
+							className="form-control"	placeholder="Notes"
+							value={transactionNotes} onChange={this.onFieldChange.bind(this)} 
+							></input>
 				  </div>			
 
 				</form>		
@@ -150,12 +187,17 @@ export class EditTransactionView extends React.Component {
 
 				<hr/>
 
+
 				<div className="toolbar-actions">
+			    <button className="btn btn-negative" onClick={this.deleteClick.bind(this)}>
+			      Delete Transaction
+			    </button>
+
 			    <button className="btn btn-default pull-right" onClick={this.cancelClick.bind(this)}>
 			      Cancel
 			    </button>
 
-			    <button className="btn btn-primary pull-right" onClick={this.cancelClick.bind(this)}>
+			    <button className="btn btn-primary pull-right" onClick={this.saveClick.bind(this)}>
 			      Save
 			    </button>
 			  </div>
