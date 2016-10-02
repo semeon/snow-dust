@@ -14,21 +14,33 @@ class StateStore extends Store {
 		this.state.selectedTransaction = ""
 	}
 
-	update(field, value) {
-		if (field) {
-			console.log("STORE: " + this.storeName + " Store Update:")
-			console.log("-- Field: " + field)
-			console.log("-- Value: " + value)
-			this.state[field] = value
-		}
-		this.applyChange()
-	}
-
 	getState(field) {
 		let	result = this.state
 		if (field) result = this.state[field]
 		return result
 	}
+
+	update(field, value) {
+		if (field) {
+
+			switch(field) {
+				case 'selectedAccount':
+					if (this.state.selectedAccount != value) this.state.selectedTransaction = ""
+					break
+				default:
+			}
+
+
+			console.log("STORE: " + this.storeName + " Store Update:")
+			console.log("-- Field: " + field)
+			console.log("-- Value: " + value)
+			this.state[field] = value
+			console.dir(this.state)
+		}
+
+		this.applyChange()
+	}
+
 
 }
 
