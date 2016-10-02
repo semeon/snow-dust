@@ -40,6 +40,10 @@ class ModelStore extends Store {
 		return this.data.accounts[accountId]
 	}
 
+	getAccounts() {
+		return this.data.accounts
+	}
+
 	getTransaction(transactionId) {
 		return this.data.transactions[transactionId]
 	}
