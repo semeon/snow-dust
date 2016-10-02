@@ -11,21 +11,26 @@ export class TransactionListView extends React.Component {
     super(props)
   }
 
-  editAccountClick() {
+  editAccount() {
 		appStateStore.update('view', 'accounts-edit-account')
   }
 
-  createTransactionClick() {
+  createTransaction() {
 		appStateStore.update('selectedTransaction', '')
 		appStateStore.update('view', 'accounts-edit-transaction')
   }
 
-  transactionSingleClick(transactionId, event) {
+  selectTransaction(transactionId, event) {
   		appStateStore.update('selectedTransaction', transactionId)
   }
 
   transactionDoubleClick(transactionId, event) {
-		// appStateStore.update('selectedTransaction', transactionId)
+		appStateStore.update('selectedTransaction', transactionId)
+		appStateStore.update('view', 'accounts-edit-transaction')
+		this.editTransaction()
+  }
+
+  editTransaction() {
 		appStateStore.update('view', 'accounts-edit-transaction')
   }
 
@@ -53,7 +58,7 @@ export class TransactionListView extends React.Component {
 		    <tr id={transaction.id}
 					key={transaction.id}
 					className="active"
-					onClick={this.transactionSingleClick.bind(this, transaction.id)}
+					onClick={this.selectTransaction.bind(this, transaction.id)}
 					onDoubleClick={this.transactionDoubleClick.bind(this, transaction.id)}
 					>
 		      <td>{transaction.date}</td>
@@ -77,18 +82,18 @@ export class TransactionListView extends React.Component {
 
 				<div className="padded">
 					<p><strong>{selectedAccount.name}</strong> ${selectedAccount.balance} ({selectedAccount.type} | {selectedAccount.currency})
-						<button className="btn btn-mini btn-default pull-right"  onClick={this.editAccountClick.bind(this)}>
+						<button className="btn btn-mini btn-default pull-right"  onClick={this.editAccount.bind(this)}>
 							<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Account
 					  </button>
 					</p> 
 				</div>
 
 				<div className="padded">
-				  <button className="btn btn-mini btn-primary" onClick={this.createTransactionClick.bind(this)}>
+				  <button className="btn btn-mini btn-primary" onClick={this.createTransaction.bind(this)}>
 						<span className="icon icon-plus icon-text"></span> &nbsp; Add Transaction
 				  </button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-				  <button className="btn btn-mini btn-default" onClick={this.createTransactionClick.bind(this)}>
+				  <button className="btn btn-mini btn-default" onClick={this.editTransaction.bind(this)}>
 						<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Transaction
 				  </button>
 
