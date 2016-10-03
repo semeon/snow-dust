@@ -30,7 +30,6 @@ export class ContainerView extends React.Component {
 
 		if (appStateStore && settingsStore) {
 			let currentView = appStateStore.getState('view')
-			console.log('Container View: ' + currentView)
 			
 			if (currentView == 'config') {
 	      contentPaneView = <ConfigView />
