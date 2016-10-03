@@ -40,6 +40,10 @@ class ModelStore extends Store {
 
 
 	// ACCOUNTS
+	createAccountObjectById(props) {
+		return this.accountModel.createAccountObjectById(props)
+	}
+
 	getAccount(accountId) {
 		return this.data.accounts[accountId]
 	}

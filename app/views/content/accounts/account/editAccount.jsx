@@ -19,30 +19,8 @@ export class EditAccountView extends React.Component {
 	}
 	
 	generateAccountObject() {
-
 		let selectedAccountId = appStateStore.getState('selectedAccount')
-
-		// Create blank
-		let account = {
-			accountType: "Cash", //REFACTOR to take defaults from settings
-			accountCurrency: "CAD",  //REFACTOR to take defaults from settings
-			accountStartBalance : 0
-		}
-
-		// Or load existing		
-		if (selectedAccountId && selectedAccountId.length > 0) {
-			let acc = modelStore.getData().accounts[selectedAccountId]
-			account = {
-				accountId: acc.id,
-				accountName: acc.name,
-				accountType: acc.type,
-				accountGroup: acc.group,
-				accountStartBalance: acc.startBalance,
-				accountCurrency: acc.currency,
-				accountExists: true,
-				accountPrevName: acc.name
-			}
-		}		
+		let account = modelStore.createAccountObjectById(selectedAccountId)
 		return account
 	}
 
@@ -68,11 +46,9 @@ export class EditAccountView extends React.Component {
   }
 
 
-
-
   render() {
-		let title = "Create New Account"
-		if (this.state.accountExists) title = "Edit Account: " + this.state.accountPrevName
+		let selectedAccountId = appStateStore.getState('selectedAccount')
+		let title = selectedAccountId.length==0 ? "Create New Account" : "Edit Account: " + this.state.accountName
 
 		let accountName = this.state.accountName ? this.state.accountName : ""
 		let accountType = this.state.accountType ? this.state.accountType : ""
@@ -141,7 +117,9 @@ export class EditAccountView extends React.Component {
 				<hr/>
 
 				<div className="toolbar-actions">
-			    <button className="btn btn-negative" onClick={this.deleteClick.bind(this)}>
+			    <button 
+							className={selectedAccountId.length>0 ? "btn btn-negative" : "hidden" }
+							onClick={this.deleteClick.bind(this)}>
 			      Delete Account
 			    </button>
 
