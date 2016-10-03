@@ -41,7 +41,7 @@ export class TransactionListView extends React.Component {
 		let selectedAccountId = appStateStore.getState('selectedAccount')
 		let selectedAccount = modelStore.getAccount(selectedAccountId)
 		let transactions = modelStore.getTransactions(selectedAccountId)
-
+		let selectedTransactionId = appStateStore.getState('selectedTransaction')
 
 		let transactionListItems = []
 		
@@ -54,10 +54,10 @@ export class TransactionListView extends React.Component {
 			if (transaction.type == "Withdrawal") withdraw = transaction.amount
 			if (transaction.type == "Debit") debit = transaction.amount
 			
+			let classValue = (transaction.id == selectedTransactionId) ? "active" : ""
+			
 			let listItem = (
-		    <tr id={transaction.id}
-					key={transaction.id}
-					className="active"
+		    <tr id={transaction.id}	key={transaction.id} 	className={classValue}
 					onClick={this.selectTransaction.bind(this, transaction.id)}
 					onDoubleClick={this.transactionDoubleClick.bind(this, transaction.id)}
 					>
@@ -92,14 +92,17 @@ export class TransactionListView extends React.Component {
 				  <button className="btn btn-mini btn-primary" onClick={this.createTransaction.bind(this)}>
 						<span className="icon icon-plus icon-text"></span> &nbsp; Add Transaction
 				  </button>
+			
 					&nbsp;&nbsp;&nbsp;&nbsp;
-				  <button className="btn btn-mini btn-default" onClick={this.editTransaction.bind(this)}>
+
+				  <button className={ selectedTransactionId.length>0 ? "btn btn-mini btn-default" : "btn btn-mini btn-default hidden"} 
+									onClick={this.editTransaction.bind(this)}>
 						<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Transaction
 				  </button>
 
 				</div>
 
-				<table className="table-striped">
+				<table className="table-striped custom-transaction-list">
 				  <thead>
 				    <tr>
 				      <th>Date</th>

@@ -1,0 +1,8 @@
+table.custom-transaction-list tr.active {
+    color: #fff;
+    background-color: #116cd6;
+}
+
+.hidden {
+	visibility: hidden;
+}
