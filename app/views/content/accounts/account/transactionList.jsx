@@ -107,8 +107,8 @@ export class TransactionListView extends React.Component {
 				    <tr>
 				      <th>Date</th>
 				      <th>Category</th>
-				      <th>Credit</th>
 				      <th>Debit</th>
+				      <th>Credit</th>
 				      <th>Balance</th>
 				      <th>Comment</th>
 				    </tr>
