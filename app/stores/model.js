@@ -39,6 +39,7 @@ class ModelStore extends Store {
 	}
 
 
+
 	// ACCOUNTS
 	createAccountObjectById(props) {
 		return this.accountModel.createAccountObjectById(props)
@@ -67,7 +68,13 @@ class ModelStore extends Store {
 		this.applyChange()
 	}
 
+
+
 	// TRANSACTIONS
+	createTransactionObjectById(selectedAccountId, selectedTransactionId) {
+		return this.transactionModel.createTransactionObjectById(selectedAccountId, selectedTransactionId)
+	}
+	
 	getTransaction(transactionId) {
 		return this.data.transactions[transactionId]
 	}
@@ -94,6 +101,7 @@ class ModelStore extends Store {
 		return transaction.id
 	}
 	
+
 
 	// DATAFILE
 	saveDataToFile() {

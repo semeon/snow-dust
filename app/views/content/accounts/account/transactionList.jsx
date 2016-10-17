@@ -27,7 +27,7 @@ export class TransactionListView extends React.Component {
   transactionDoubleClick(transactionId, event) {
 		appStateStore.update('selectedTransaction', transactionId)
 		appStateStore.update('view', 'accounts-edit-transaction')
-		this.editTransaction()
+		// this.editTransaction()
   }
 
   editTransaction() {
@@ -52,7 +52,7 @@ export class TransactionListView extends React.Component {
 			let debit = 0
 			
 			if (transaction.type == "Withdrawal") withdraw = transaction.amount
-			if (transaction.type == "Debit") debit = transaction.amount
+			if (transaction.type == "Deposit") debit = transaction.amount
 			
 			let classValue = (transaction.id == selectedTransactionId) ? "active" : ""
 			
@@ -62,7 +62,7 @@ export class TransactionListView extends React.Component {
 					onDoubleClick={this.transactionDoubleClick.bind(this, transaction.id)}
 					>
 		      <td>{transaction.date}</td>
-		      <td>{transaction.category}: {transaction.category}</td>
+		      <td>{transaction.category}: {transaction.subcategory}</td>
 		      <td>{debit}</td>
 		      <td>{withdraw}</td>
 		      <td>0</td>
@@ -89,7 +89,9 @@ export class TransactionListView extends React.Component {
 				</div>
 
 				<div className="padded">
-				  <button className="btn btn-mini btn-primary" onClick={this.createTransaction.bind(this)}>
+				  <button className="btn btn-mini btn-primary" 
+									onClick={this.createTransaction.bind(this)}>
+
 						<span className="icon icon-plus icon-text"></span> &nbsp; Add Transaction
 				  </button>
 			
@@ -97,6 +99,7 @@ export class TransactionListView extends React.Component {
 
 				  <button className={ selectedTransactionId.length>0 ? "btn btn-mini btn-default" : "btn btn-mini btn-default hidden"} 
 									onClick={this.editTransaction.bind(this)}>
+
 						<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Transaction
 				  </button>
 

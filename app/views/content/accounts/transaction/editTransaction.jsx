@@ -17,36 +17,9 @@ export class EditTransactionView extends React.Component {
 	}
 
 	generateTransactionObject() {
-
 		let selectedAccountId = appStateStore.getState('selectedAccount')		
 		let selectedTransactionId = appStateStore.getState('selectedTransaction')
-
-		// Create blank
-		let transaction = {
-			accountId: selectedAccountId,
-			transactionAmount: 0,
-			transactionType: "Withdrawal", //REFACTOR to take defaults from settings
-			transactionCategory: "",
-			transactionSubcategory: "",
-			transactionNotes : ""
-		}
-
-		// Or load existing
-		if (selectedTransactionId && selectedTransactionId.length > 0) {
-			let trns = modelStore.getTransaction(selectedTransactionId)
-			transaction = {
-				transactionId: trns.id,
-				transactionDate: trns.date,
-				transactionAmount: trns.amount,
-				accountId: trns.accountId,
-				transactionType: trns.type,
-				transactionCategory: trns.category,
-				transactionSubcategory: trns.subcategory,
-				transactionNotes: trns.notes,
-				
-				transactionExists: true
-			}
-		}		
+		let transaction = modelStore.createTransactionObjectById(selectedAccountId, selectedTransactionId)
 		return transaction
 	}
 
@@ -84,7 +57,8 @@ export class EditTransactionView extends React.Component {
 		let transactionType = this.state.transactionType ? this.state.transactionType : "" 
 		let accountId = this.state.accountId ? this.state.accountId : ""
 		let transactionAmount = this.state.transactionAmount ? this.state.transactionAmount : 0
-		let transactionNotes = this.state.transactionNotes ? this.state.transactionNotes : ""
+		let transactionCategory = this.state.transactionCategory ? this.state.transactionCategory : ""
+		let transactionNotes = this.state.transactionNotes ? this.state.transactionNotes : "" 
 
 		console.log("--- CREATE/EDIT TRANSACTION VIEW ---")
 		console.dir(this.state)
@@ -104,7 +78,13 @@ export class EditTransactionView extends React.Component {
 
 				<form>
 
-						
+				
+
+					{
+						// 	Withdrawal / Deposit 
+				    // ========================================
+					}
+			    
 				  <div className="form-group">
 					  <div className="radio">
 					    <label>
@@ -127,6 +107,11 @@ export class EditTransactionView extends React.Component {
 					  </div>
 					</div>
 
+					{
+						// 	Account
+				    // ========================================
+					}
+
 				  <div className="form-group">
 				    <label>Account</label>
 					  <select	name="accountId" type="text" 
@@ -137,6 +122,11 @@ export class EditTransactionView extends React.Component {
 					  </select>
 				  </div>
 
+
+					{
+						// 	Date
+				    // ========================================
+					}
 				  <div className="form-group">
 				    <label>Transaction Date</label>
 				    <input name="transactionDate" type="text"	
@@ -145,6 +135,22 @@ export class EditTransactionView extends React.Component {
 							></input>									
 				  </div>
 
+					{
+						// 	Category
+				    // ========================================
+					}
+
+				  <div className="form-group">
+				    <label>Category</label>
+				    <input name="transactionCategory" type="text"	
+							className="form-control"	placeholder="Category"
+							value={transactionCategory} onChange={this.onFieldChange.bind(this)} 
+							></input>						
+
+				  </div>
+					
+					
+							
 					{/*
 
 				  <div className="form-group">

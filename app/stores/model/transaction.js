@@ -1,5 +1,6 @@
 let moment = require('moment')
 import {AuditLogger} from './auditLogger.js'
+import {modelStore} from '/app/stores/model.js'
 
 export class TransactionModel extends AuditLogger {
 
@@ -23,6 +24,37 @@ export class TransactionModel extends AuditLogger {
 
 		transaction.updated = moment().toJSON()
 		return transaction
+	}
+
+	createTransactionObjectById(selectedAccountId, selectedTransactionId) {
+		
+		// Create blank
+		let transaction = {
+			accountId: selectedAccountId,
+			transactionAmount: 0,
+			transactionType: "Withdrawal", //REFACTOR to take defaults from settings
+			transactionCategory: "",
+			transactionSubcategory: "",
+			transactionNotes : ""
+		}
+
+		// Or load existing
+		if (selectedTransactionId && selectedTransactionId.length > 0) {
+			let trns = modelStore.getTransaction(selectedTransactionId)
+			transaction = {
+				transactionId: trns.id,
+				transactionDate: trns.date,
+				transactionAmount: trns.amount,
+				accountId: trns.accountId,
+				transactionType: trns.type,
+				transactionCategory: trns.category,
+				transactionSubcategory: trns.subcategory,
+				transactionNotes: trns.notes,
+				
+				transactionExists: true
+			}
+		}		
+		return transaction		
 	}
 
 	generateId() {
