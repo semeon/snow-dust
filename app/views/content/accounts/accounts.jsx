@@ -56,25 +56,19 @@ export class AccountsView extends React.Component {
 		} 
 
     return (
-			
-		  <div className="window-content">
-		    <div className="pane-group">
-		      <div className="pane-sm sidebar">
-					  <div className="toolbar-actions">
-					    <button className="btn btn-default pull-center" onClick={this.addAccountClick.bind(this)}>
-					      <span className="icon icon-list-add"></span>&nbsp; Add Account
-					    </button>
-					  </div>	
-						<hr/>
-						<AccountListNavView />
-					</div>
+			<div className="row container-fluid">
+			  <div className="col-xs-12 col-sm-4 col-md-4 col-lg-2">
+			    <button className="btn btn-default pull-center" onClick={this.addAccountClick.bind(this)}>
+			      <i className="fa fa-plus" aria-hidden="true"></i> Add Account
+			    </button>
+					<hr />
+					<AccountListNavView />
+				</div>
 
-		      <div className="pane">
-						{mainPane}
-					</div>
-		    </div>
-		  </div>
-			
+			  <div className="col-xs-12 col-sm-8 col-md-8 col-lg-10">
+					{mainPane}
+				</div>
+			</div>
     )
   }
 }

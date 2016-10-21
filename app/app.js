@@ -17,13 +17,13 @@ console.dir(modelStore.getData())
 // import {modelStore} from '/app/stores/model.js'
 // console.dir(modelStore)
 
-let newAccount = {
-	id:'acc01',
-	name: 'All-Inclusive Checking Account TD',
-	currency: 'CAD',
-	startBalance: 0,
-	type: 'checking'
-}
+// let newAccount = {
+// 	id:'acc01',
+// 	name: 'All-Inclusive Checking Account TD',
+// 	currency: 'CAD',
+// 	startBalance: 0,
+// 	type: 'checking'
+// }
 // console.dir(newAccount)
 // modelStore.createAccount(newAccount)
 

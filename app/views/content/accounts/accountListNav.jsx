@@ -26,27 +26,27 @@ export class AccountListNavView extends React.Component {
 		
 		for (let id in accounts) {
 			let account = accounts[id]
-			let classString = 'nav-group-item'
+			let classString = 'list-group-item'
 			if (id == selectedAccount) classString += ' active'
 
 			let navItem = (
-			  <span key={id} className={classString} onClick={this.listItemClick.bind(this, id)}>
-			    <small><strong>{account.name}</strong> <br/> ${account.balance}</small>
-			  </span>			
+				<a key={id} href="#" className={classString} onClick={this.listItemClick.bind(this, id)}>
+			    <h5 className="list-group-item-heading">{account.name}</h5>
+			    <p className="list-group-item-text">
+						<small>${account.balance} {account.currency} | {account.type}</small>
+					</p>
+				</a>				
 			)
-
 			navItems.push(navItem)
 		}
-		
 
     return (
-			<nav className="nav-group">
-			
-			  <h5 className="nav-group-title">Checking and Credit</h5>
-				{navItems}
-
-			</nav>
-			
+			<div>
+				<h4>Checking and Credit</h4>
+				<div className="list-group">
+					{navItems}
+				</div>
+			</div>
     )
   }
 }

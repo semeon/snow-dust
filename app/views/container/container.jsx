@@ -43,12 +43,11 @@ export class ContainerView extends React.Component {
 		}
 
     return (
-			<div className="window">
+			<div>
 				<HeaderView />
 				{contentPaneView}
-			  <FooterView />
+				<FooterView />
 			</div>
     )
-
   }
 }

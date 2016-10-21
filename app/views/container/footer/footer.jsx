@@ -15,9 +15,11 @@ export class FooterView extends React.Component {
 		let datafilePath = settingsStore.getSettings().datafile
 
     return (
-		  <footer className="toolbar toolbar-footer">
-				<h1 className="title pull-left"> &nbsp;Datafile: {datafilePath} <span className="icon icon-floppy"></span></h1>
-		  </footer>			
+				<nav className="navbar navbar-default navbar-fixed-bottom">
+				  <div className="container">
+				    <p className="navbar-text">Datafile: {datafilePath}</p>
+				  </div>
+				</nav>
     )
   }
 }

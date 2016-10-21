@@ -78,34 +78,39 @@ export class TransactionListView extends React.Component {
     return (
 
 
-			<div>
+			<div className="panel panel-default">
 
-				<div className="padded">
-					<p><strong>{selectedAccount.name}</strong> ${selectedAccount.balance} ({selectedAccount.type} | {selectedAccount.currency})
-						<button className="btn btn-mini btn-default pull-right"  onClick={this.editAccount.bind(this)}>
-							<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Account
-					  </button>
-					</p> 
+			  <div className="panel-heading">
+					<h3 className="panel-title">Account: {selectedAccount.name} | {selectedAccount.type} | {selectedAccount.currency}</h3>
 				</div>
+					
+			  <div className="panel-body">
+			    <p>
+						Balance: ${selectedAccount.balance}
+					</p>
 
-				<div className="padded">
-				  <button className="btn btn-mini btn-primary" 
-									onClick={this.createTransaction.bind(this)}>
+					<div className="btn-toolbar" role="toolbar" aria-label="...">
+					  <div className="btn-group btn-group-xs" role="group" aria-label="...">
+						  <button type="button" className="btn btn-primary" 
+											onClick={this.createTransaction.bind(this)}>
+								Add Transaction
+						  </button>
+						  <button type="button" className={ selectedTransactionId.length>0 ? "btn btn-mini btn-default" : "btn btn-mini btn-default disabled"} 
+											onClick={this.editTransaction.bind(this)}>
+								Edit Transaction
+						  </button>
+						</div>
+						
+					  <div className="btn-group btn-group-xs pull-right" role="group" aria-label="...">
+							<button type="button" className="btn btn-default" onClick={this.editAccount.bind(this)}>
+								Edit Account
+						  </button>
+  					</div>
+					</div>
+							
+			  </div>
 
-						<span className="icon icon-plus icon-text"></span> &nbsp; Add Transaction
-				  </button>
-			
-					&nbsp;&nbsp;&nbsp;&nbsp;
-
-				  <button className={ selectedTransactionId.length>0 ? "btn btn-mini btn-default" : "btn btn-mini btn-default hidden"} 
-									onClick={this.editTransaction.bind(this)}>
-
-						<span className="icon icon-pencil icon-text"></span> &nbsp; Edit Transaction
-				  </button>
-
-				</div>
-
-				<table className="table-striped custom-transaction-list">
+				<table className="table table-striped table-condensed">
 				  <thead>
 				    <tr>
 				      <th>Date</th>

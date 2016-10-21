@@ -1,343 +1,311 @@
 {
-	"id":"datafile001",
-	"accounts": {
-
-		"account-001": {
-			"id": "account-001",
-			"name": "Cash CAD",
-			"type": "Cash",
-			"group": "Checking and Credit",
-			"startBalance": 0,
-			"balance": 137.12,
-			"currency": "CAD",
-			"updated": ""
-			
-		},
-
-		"account-002": {
-			"id": "account-002",
-			"name": "TD Checking",
-			"type": "Debit",
-			"group": "Checking and Credit",
-			"startBalance": 0,
-			"balance": 7337.80,
-			"currency": "CAD",
-			"updated": ""
-		},
-
-		"account-003": {
-			"id": "account-003",
-			"name": "TD MasterCard",
-			"type": "Credit",
-			"group": "Checking and Credit",
-			"startBalance": 0,
-			"balance": -12.56,
-			"currency": "CAD",
-			"updated": ""
-		},
-
-		"account-004": {
-			"id": "account-004",
-			"name": "TD Saving",
-			"type": "Debit",
-			"group": "Savings and Investments",
-			"startBalance": 0,
-			"balance": 7020.56,
-			"currency": "CAD",
-			"updated": ""
-		}
-		
-	},
-	
-	"transactions": {
-
-		"transaction-001": {
-			"id": "transaction-001",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-002": {
-			"id": "transaction-002",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-003": {
-			"id": "transaction-003",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},
-		
-		"transaction-004": {
-			"id": "transaction-004",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-005": {
-			"id": "transaction-005",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-006": {
-			"id": "transaction-006",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},
-		
-		"transaction-007": {
-			"id": "transaction-007",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-008": {
-			"id": "transaction-008",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-009": {
-			"id": "transaction-009",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},
-		
-		"transaction-010": {
-			"id": "transaction-010",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-011": {
-			"id": "transaction-011",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-012": {
-			"id": "transaction-012",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},					
-
-		"transaction-013": {
-			"id": "transaction-013",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-014": {
-			"id": "transaction-014",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-015": {
-			"id": "transaction-015",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},
-		
-		"transaction-016": {
-			"id": "transaction-016",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-017": {
-			"id": "transaction-017",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-018": {
-			"id": "transaction-018",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},
-		
-		"transaction-019": {
-			"id": "transaction-019",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-020": {
-			"id": "transaction-020",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-021": {
-			"id": "transaction-021",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		},
-		
-		"transaction-022": {
-			"id": "transaction-022",
-			"date": "2016-09-12",
-			"amount": 15.12,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Pho!",
-			"updated": ""
-		},
-
-		"transaction-023": {
-			"id": "transaction-023",
-			"date": "2016-09-13",
-			"amount": 25.54,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Sushi!",
-			"updated": ""
-		},
-
-		"transaction-024": {
-			"id": "transaction-024",
-			"date": "2016-09-14",
-			"amount": 12.44,
-			"accountId": "account-001",
-			"type": "Withdrawal",
-			"category": "Food",
-			"subcategory": "Restaurants",
-			"notes": "Ramen!",
-			"updated": ""
-		}	
-
-	}
+  "id": "datafile001",
+  "accounts": {
+    "account-001": {
+      "id": "account-001",
+      "name": "Cash CAD",
+      "type": "Cash",
+      "group": "Checking and Credit",
+      "startBalance": 0,
+      "balance": 137.12,
+      "currency": "CAD",
+      "updated": ""
+    },
+    "account-002": {
+      "id": "account-002",
+      "name": "TD Checking",
+      "type": "Debit",
+      "group": "Checking and Credit",
+      "startBalance": 0,
+      "balance": 7337.8,
+      "currency": "CAD",
+      "updated": ""
+    },
+    "account-003": {
+      "id": "account-003",
+      "name": "TD MasterCard",
+      "type": "Credit",
+      "group": "Checking and Credit",
+      "startBalance": 0,
+      "balance": -12.56,
+      "currency": "CAD",
+      "updated": ""
+    },
+    "account-004": {
+      "id": "account-004",
+      "name": "TD Saving",
+      "type": "Debit",
+      "group": "Savings and Investments",
+      "startBalance": 0,
+      "balance": 7020.56,
+      "currency": "CAD",
+      "updated": ""
+    }
+  },
+  "transactions": {
+    "transaction-001": {
+      "id": "transaction-001",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-002": {
+      "id": "transaction-002",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-003",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": "2016-10-21T00:23:30.511Z"
+    },
+    "transaction-003": {
+      "id": "transaction-003",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-003",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": "2016-10-21T00:23:38.363Z"
+    },
+    "transaction-004": {
+      "id": "transaction-004",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-005": {
+      "id": "transaction-005",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-006": {
+      "id": "transaction-006",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    },
+    "transaction-007": {
+      "id": "transaction-007",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-008": {
+      "id": "transaction-008",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-009": {
+      "id": "transaction-009",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    },
+    "transaction-010": {
+      "id": "transaction-010",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-011": {
+      "id": "transaction-011",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-012": {
+      "id": "transaction-012",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    },
+    "transaction-013": {
+      "id": "transaction-013",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-014": {
+      "id": "transaction-014",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-015": {
+      "id": "transaction-015",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    },
+    "transaction-016": {
+      "id": "transaction-016",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-017": {
+      "id": "transaction-017",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-018": {
+      "id": "transaction-018",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    },
+    "transaction-019": {
+      "id": "transaction-019",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-020": {
+      "id": "transaction-020",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-021": {
+      "id": "transaction-021",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    },
+    "transaction-022": {
+      "id": "transaction-022",
+      "date": "2016-09-12",
+      "amount": 15.12,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Pho!",
+      "updated": ""
+    },
+    "transaction-023": {
+      "id": "transaction-023",
+      "date": "2016-09-13",
+      "amount": 25.54,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Sushi!",
+      "updated": ""
+    },
+    "transaction-024": {
+      "id": "transaction-024",
+      "date": "2016-09-14",
+      "amount": 12.44,
+      "accountId": "account-001",
+      "type": "Withdrawal",
+      "category": "Food",
+      "subcategory": "Restaurants",
+      "notes": "Ramen!",
+      "updated": ""
+    }
+  }
 }

@@ -24,32 +24,25 @@ export class HeaderView extends React.Component {
 		let datafilePath = settingsStore.getSettings().datafile
 		let currentView = appStateStore.getState('view')
 
-		let dbBtnClass = 'btn btn-default'
+		let dbBtnClass = ''
 		if (currentView == 'config' ) dbBtnClass += ' active'
 
-		let accountsBtnClass = 'btn btn-default'
+		let accountsBtnClass = ''
 		if (currentView.indexOf('accounts-') == 0 ) accountsBtnClass += ' active'
 
     return (
-		  <header className="toolbar toolbar-header">
-		    <h1 className="title">Header</h1>
-
-				<div className="toolbar-actions">
-			    <div className="btn-group">
-			      <button className={dbBtnClass} onClick={this.datafileClick.bind(this)}>
-			        <span className="icon icon-database"></span>
-			      </button>
-			      <button className={accountsBtnClass} onClick={this.accountsClick.bind(this)}>
-			        <span className="icon icon-list"></span>
-			      </button>
-			    </div>
-
-		      <button className="btn btn-default">
-		        <span className="icon icon-floppy"></span>
-		      </button>
+			<nav className="navbar navbar-default navbar-static-top">
+			  <div className="container-fluid">
+					<ul className="nav navbar-nav">
+						<li className={dbBtnClass} onClick={this.datafileClick.bind(this)} >
+							<a href="#"><i className="fa fa-database" aria-hidden="true"></i> Datafile</a>
+						</li>			
+						<li className={accountsBtnClass} onClick={this.accountsClick.bind(this)} >
+							<a href="#"><i className="fa fa-list" aria-hidden="true"></i> Accounts</a>
+						</li>			
+					</ul>
 			  </div>
-
-		  </header>		
+			</nav>		
     )
   }
 }
