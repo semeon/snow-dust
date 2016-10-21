@@ -16,7 +16,7 @@ export class FooterView extends React.Component {
 
     return (
 				<nav className="navbar navbar-default navbar-fixed-bottom">
-				  <div className="container">
+				  <div className="container-fluid">
 				    <p className="navbar-text">Datafile: {datafilePath}</p>
 				  </div>
 				</nav>

@@ -56,7 +56,7 @@ export class AccountsView extends React.Component {
 		} 
 
     return (
-			<div className="row container-fluid">
+			<div className="row">
 			  <div className="col-xs-12 col-sm-4 col-md-4 col-lg-2">
 			    <button className="btn btn-default pull-center" onClick={this.addAccountClick.bind(this)}>
 			      <i className="fa fa-plus" aria-hidden="true"></i> Add Account

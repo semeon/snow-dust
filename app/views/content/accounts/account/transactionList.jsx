@@ -121,9 +121,11 @@ export class TransactionListView extends React.Component {
 				      <th>Comment</th>
 				    </tr>
 				  </thead>
-				  <tbody>
+
+				  <tbody className="transaction-list">
 						{transactionListItems}
 				  </tbody>
+
 				</table>
 
 			</div>

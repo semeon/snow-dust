@@ -43,7 +43,7 @@ export class ContainerView extends React.Component {
 		}
 
     return (
-			<div>
+			<div className="container-fluid">
 				<HeaderView />
 				{contentPaneView}
 				<FooterView />

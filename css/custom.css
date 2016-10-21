@@ -1,12 +1,8 @@
-#id { 
+body { 
 	padding-top: 70px; 
 	padding-bottom: 70px; 
 }
 
-table.custom-transaction-list tr.active {
-    color: #fff;
-    background-color: #116cd6;
-}
 
 .hidden {
 	visibility: hidden;

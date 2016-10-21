@@ -31,7 +31,7 @@ export class HeaderView extends React.Component {
 		if (currentView.indexOf('accounts-') == 0 ) accountsBtnClass += ' active'
 
     return (
-			<nav className="navbar navbar-default navbar-static-top">
+			<nav className="navbar navbar-default navbar-fixed-top">
 			  <div className="container-fluid">
 					<ul className="nav navbar-nav">
 						<li className={dbBtnClass} onClick={this.datafileClick.bind(this)} >
